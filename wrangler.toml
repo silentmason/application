@@ -6,6 +6,6 @@ compatibility_date = "2024-01-01"
 # You can define environment variables here if needed
 
 [[d1_databases]]
-binding = "DB"
+binding = "D1_DB"
 database_name = "moderator-applications"
 database_id = "a9b2dc8a-ca47-4ead-a9f1-033e442fcd2d"
