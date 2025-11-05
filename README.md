@@ -1,1 +1,1 @@
-# application
+This is the application for Tell's Avatars! You may apply through !
