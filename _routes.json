@@ -1,0 +1,4 @@
+[
+  { "pattern": "/get-submissions", "function": true },
+  { "pattern": "/admin/*", "function": false }
+]

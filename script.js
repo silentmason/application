@@ -1,5 +1,3 @@
-// script.js
-
 document.getElementById('moderatorForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -17,23 +15,8 @@ document.getElementById('moderatorForm').addEventListener('submit', function(eve
         return;
     }
 
-    // Display submitted data (for demonstration purposes)
-    let selectedPositions = Array.from(positions).map(p => p.value).join(', ');
-    let message = `
-        First Name: ${firstName}
-        Last Name: ${lastName}
-        Age: ${age}
-        Positions: ${selectedPositions}
-        Moderation Experience: ${moderationExperience}
-        Why Moderate: ${whyModerate}
-        How Help: ${howHelp}
-        Proof File: ${proof}
-    `;
 
-    alert('Form submitted successfully!\n\n' + message);
-
-    // In a real application, you would submit the data to a server here
-    // using AJAX or a similar technique.
-
-    // For file uploads, you would typically use FormData to handle the file data.
+    // Success
+    alert('Form submitted successfully!');
+    document.getElementById('moderatorForm').reset();
 });
