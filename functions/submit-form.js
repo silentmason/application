@@ -9,32 +9,25 @@ export async function onRequest(context) {
       const formData = await request.formData();
       const firstName = formData.get('firstName');
       const lastName = formData.get('lastName');
-      const age = formData.get('age');
+      const age = parseInt(formData.get('age'));
       const positions = formData.get('positions');
       const moderationExperience = formData.get('moderationExperience');
       const whyModerate = formData.get('whyModerate');
       const howHelp = formData.get('howHelp');
       const proof = formData.get('proof');
 
-      // -----------------------------------------------------------------------
-      // TO DO:
-      // Add your server-side processing logic here:
-      // - Validate the form data
-      // - Store the data in a database (e.g., Cloudflare D1)
-      // - Send an email notification
-      // - etc.
-      // -----------------------------------------------------------------------
+      if (!firstName || !lastName || isNaN(age) || !positions || !moderationExperience || !whyModerate || !howHelp) {
+        return new Response('Missing or invalid form data', { status: 400 });
+      }
 
-      console.log('Form Data:', {
-        firstName,
-        lastName,
-        age,
-        positions,
-        moderationExperience,
-        whyModerate,
-        howHelp,
-        proof,
-      });
+      // Insert the data into the D1 database
+      const { results } = await env.DB.prepare(
+        `INSERT INTO applications (firstName, lastName, age, positions, moderationExperience, whyModerate, howHelp, proof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+      )
+        .bind(firstName, lastName, age, positions, moderationExperience, whyModerate, howHelp, proof)
+        .run();
+
+      console.log('D1 insert results:', results);
 
       return new Response(
         JSON.stringify({ message: 'Form submitted successfully!' }),
