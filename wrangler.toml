@@ -1,11 +1,11 @@
-name = "your-worker-name"
-main = "script.js"
-compatibility_date = "2024-01-01" # or a more recent date
+name = "moderator-form-handler"
+main = "worker.ts"
+compatibility_date = "2024-01-01"
 
 [vars]
 # You can define environment variables here if needed
 
-[d1_databases]
-binding = "D1_DB" # i.e. available in your worker as env.D1_DB
-database_name = "moderator-applications" # The name you gave your D1 database
-database_id = "your-database-id" # The ID of your D1 database
+[[d1_databases]]
+binding = "DB"
+database_name = "moderator-applications"
+database_id = "a9b2dc8a-ca47-4ead-a9f1-033e442fcd2d"
